@@ -4,6 +4,11 @@ player = require("player")
 love.window.setMode(810, 600)
 
 function love.load()
+    colors = {
+        darkGray = {0.3, 0.3, 0.3},
+        yellow = {1.0, 1.0, 0.6}
+    }
+
     map = {
         "############################",
         "#                         ##",
@@ -39,9 +44,11 @@ end
 function love.draw()
     --love.graphics.setFont(love.graphics.newFont(60))
     for index, value in ipairs(map) do
+        love.graphics.setColor(colors.darkGray)
         love.graphics.print(value, 0 - player.camera.x, 0 + (index - 1) * 30 - player.camera.y)
     end
 
+    love.graphics.setColor(colors.yellow)
     love.graphics.print("@", player.x, player.y)
 end
 
@@ -57,7 +64,7 @@ function love.update(dt)
         player.move({x = 0, y = 1}, map)
     end
 
-    if counter >= 0.1 then
+    if counter >= player.cooldown then
         counter = 0
         player.canMove = true
     end

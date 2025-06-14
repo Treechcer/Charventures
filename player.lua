@@ -9,7 +9,8 @@ player = {
     y = height,
     canMove = true,
     tilex = 1,
-    tiley = 1
+    tiley = 1,
+    cooldown = 0.2
 }
 
 function player.move(m, map)
