@@ -1,5 +1,6 @@
 love = require("love")
 player = require("player")
+mapgen = require("mapgen")
 
 love.window.setMode(810, 600)
 
@@ -9,30 +10,7 @@ function love.load()
         yellow = {1.0, 1.0, 0.6}
     }
 
-    map = {
-        "############################",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                          ",
-        "#                          ",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "#                         ##",
-        "############# ##############",
-        "############# ##############",
-        "#                         ##",
-    }
+    map = mapgen.gen()
 
     local font = love.graphics.newFont("Press Start 2p - font/PressStart2P-Regular.ttf", 30)
     font:setLineHeight(0.7)

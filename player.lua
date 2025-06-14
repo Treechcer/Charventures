@@ -41,9 +41,13 @@ function player.move(m, map)
         player.cameraMove({x = 810, y = 0})
         player.x = player.x - 810
         player.tilex = (player.x) / player.height + 1
-    elseif player.x == 0 then
+    elseif player.x <= 0 then
+        local bonus = 0
+        if (player.x < 0) then
+            bonus = player.height
+        end
         player.cameraMove({x = -810, y = 0})
-        player.x = player.x + 810 - player.height
+        player.x = player.x + 810 - player.height + bonus
         player.tilex = (player.x) / player.height + 1
     end
 
@@ -52,8 +56,12 @@ function player.move(m, map)
         player.y = player.y - 600
         player.tiley = (player.y) / player.height + 1
     elseif player.y <= 0 then
+        local bonus = 0
+        if (player.y < 0) then
+            bonus = player.height
+        end
         player.cameraMove({x = 0, y = -600})
-        player.y = player.y + 600 - player.height
+        player.y = player.y + 600 - player.height + bonus
         player.tiley = (player.y) / player.height + 1
     end
 end
