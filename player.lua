@@ -10,7 +10,7 @@ player = {
     canMove = true,
     tilex = 1,
     tiley = 1,
-    cooldown = 0.2
+    cooldown = 0.15
 }
 
 function player.move(m, map)

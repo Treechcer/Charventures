@@ -3,7 +3,7 @@ mapgen = {
 }
 
 room = {
-        "###########################",
+        "#############^#############",
         "#                         #",
         "#                         #",
         "#                         #",
@@ -32,6 +32,18 @@ function mapgen.gen()
         end
     end
 
+    local temp = {}
+
+    for _ = 1, 3, 1 do
+        for index, value in ipairs(room) do
+        table.insert(temp, value)
+        end
+    end
+
+    for key, value in pairs(temp) do
+        table.insert(room, value)
+    end
+
     for index, value in ipairs(room) do
         if string.sub(value, 1, 1) == "(" then
             value = "#" .. string.sub(value, 2)
@@ -43,6 +55,9 @@ function mapgen.gen()
 
         room[index] = value
     end
+
+    room[1] = string.gsub(room[1], "%^", "#")
+    room[#room] = string.gsub(room[#room], "V", "#")
 
     return room
 end
