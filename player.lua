@@ -15,26 +15,23 @@ player = {
 
 function player.move(m, map)
     counter = 0
-
-    player.x = player.x + (1 * m.x * player.height)
-    player.y = player.y + (1 * m.y * player.height)
-
-    player.tilex = (player.x - player.camera.x) / player.height + 1
-    player.tiley = (player.y + player.camera.y) / player.height + 1
-
     player.canMove = false
 
-    print("DEBUG: tilex = ", player.tilex)
-    print("DEBUG: tiley = ", player.tiley)
-    print("DEBUG: cam Y = ", player.camera.y)
-    print("DEBUG: y = ", player.y)
-    print("DEBUG: map[player.tiley] = ", map[player.tiley])
+    player.x = player.x + (m.x * player.height)
+    player.y = player.y + (m.y * player.height)
+
+    player.tilex = (player.x + player.camera.x) / player.height + 1
+    player.tiley = (player.y + player.camera.y) / player.height + 1
+
     if string.sub(map[player.tiley], player.tilex, player.tilex) == "#" then
         player.x = player.x - (1 * m.x * player.height)
         player.y = player.y - (1 * m.y * player.height)
         
         player.tilex = (player.x - player.camera.x) / player.height + 1
         player.tiley = (player.y + player.camera.y) / player.height + 1
+        
+        player.tilex = math.abs(player.tilex)
+        player.tiley = math.abs(player.tiley)
     end
 
     if player.x == 810 then
@@ -64,6 +61,9 @@ function player.move(m, map)
         player.y = player.y + 600 - player.height + bonus
         player.tiley = (player.y) / player.height + 1
     end
+
+    player.tilex = math.abs(player.tilex)
+    player.tiley = math.abs(player.tiley)
 end
 
 function player.cameraMove(px)

@@ -6,8 +6,9 @@ love.window.setMode(810, 600)
 
 function love.load()
     colors = {
-        darkGray = {0.3, 0.3, 0.3},
-        yellow = {1.0, 1.0, 0.6}
+        darkGray = {0.32, 0.31, 0.35},
+        yellow = {1.0, 1.0, 0.63},
+        brown = {0.59, 0.29, 0.0}
     }
 
     map = mapgen.gen()
@@ -22,8 +23,16 @@ end
 function love.draw()
     --love.graphics.setFont(love.graphics.newFont(60))
     for index, value in ipairs(map) do
-        love.graphics.setColor(colors.darkGray)
-        love.graphics.print(value, 0 - player.camera.x, 0 + (index - 1) * 30 - player.camera.y)
+        for i = 1, #value do
+            local char = value:sub(i,i)
+            if char == "#" then
+                love.graphics.setColor(colors.darkGray)
+                love.graphics.print(char, 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+            elseif char == ")" or char == "(" or char == "V" or char == "^" then
+                love.graphics.setColor(colors.brown)
+                love.graphics.print(char, 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+            end
+        end
     end
 
     love.graphics.setColor(colors.yellow)
