@@ -59,6 +59,20 @@ function mapgen.gen()
     room[1] = string.gsub(room[1], "%^", "#")
     room[#room] = string.gsub(room[#room], "V", "#")
 
+    --[[for i = 1, 350 do
+        local x = math.ceil(math.random() * #room[1])
+        local y = math.ceil(math.random() * #room)
+
+        local char = string.sub(room[y], x, x)
+
+        if char ~= "#" then
+            local line = room[y]
+            room[y] = string.sub(line, 1, x - 1) .. "#" .. string.sub(line, x + 1)
+        end
+    end]]
+
+    -- I've made "walls" but I don't like them... I need to write other algorith for that not just random noise (who could've guessed)
+
     return room
 end
 

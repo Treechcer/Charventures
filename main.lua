@@ -1,3 +1,5 @@
+math.randomseed(os.time())
+
 love = require("love")
 player = require("player")
 mapgen = require("mapgen")
