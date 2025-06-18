@@ -73,7 +73,27 @@ function mapgen.gen()
 
     -- I've made "walls" but I don't like them... I need to write other algorith for that not just random noise (who could've guessed)
 
-    return room
+
+
+    local tablefiedRoom = {} --for better manipulation, because LUA strings sucks, it's not like array while tables are... they jsut start at 1 not zero
+
+    for j = 1, #room do
+        tablefiedRoom[j] = {}
+        for i = 1, #room[j] do
+            table.insert(tablefiedRoom[j], string.sub(room[j], i, i))
+        end
+    end
+
+    --this makes copy of the map but in table instead of string
+
+    tablefiedRoom[5][5] = "#" -- random test of changing nothing to wall
+
+    local xLen = #tablefiedRoom[1]
+    local yLen = #tablefiedRoom
+
+    -- I'll do something more tommorrow... I'm kinda lazy last few days (not really, I'm learning but not just pushing code lol)
+
+    return tablefiedRoom
 end
 
 

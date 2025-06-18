@@ -26,13 +26,13 @@ function love.draw()
     --love.graphics.setFont(love.graphics.newFont(60))
     for index, value in ipairs(map) do
         for i = 1, #value do
-            local char = value:sub(i,i)
-            if char == "#" then
+            --local char = value:sub(i,i)
+            if value[i] == "#" then
                 love.graphics.setColor(colors.darkGray)
-                love.graphics.print(char, 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
-            elseif char == ")" or char == "(" or char == "V" or char == "^" then
+                love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+            elseif value[i] == ")" or value[i] == "(" or value[i] == "V" or value[i] == "^" then
                 love.graphics.setColor(colors.brown)
-                love.graphics.print(char, 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+                love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
             end
         end
     end

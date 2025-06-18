@@ -23,7 +23,7 @@ function player.move(m, map)
     player.tilex = (player.x + player.camera.x) / player.height + 1
     player.tiley = (player.y + player.camera.y) / player.height + 1
 
-    if string.sub(map[player.tiley], player.tilex, player.tilex) == "#" then
+    if map[player.tiley][player.tilex] == "#" then
         player.x = player.x - (1 * m.x * player.height)
         player.y = player.y - (1 * m.y * player.height)
         
