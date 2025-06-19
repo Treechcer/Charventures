@@ -26,10 +26,8 @@ room = {
     }
 
 function mapgen.gen()
-    for _ = 1, 2, 1 do
-        for index, value in ipairs(room) do
-            room[index] = value .. value
-        end
+    for index, value in ipairs(room) do
+        room[index] = value .. value .. value
     end
 
     local temp = {}
@@ -91,7 +89,18 @@ function mapgen.gen()
     local xLen = #tablefiedRoom[1]
     local yLen = #tablefiedRoom
 
-    -- I'll do something more tommorrow... I'm kinda lazy last few days (not really, I'm learning but not just pushing code lol)
+    for index0, value0 in ipairs(tablefiedRoom) do
+        for index, value in ipairs(tablefiedRoom[index0]) do
+            local percentile = math.ceil(math.random() * 100)
+            local part = value
+
+            if part == " " and percentile >= 1 and percentile <= 5 then
+                part = "~"
+            end
+
+            tablefiedRoom[index0][index] = part
+        end
+    end
 
     return tablefiedRoom
 end

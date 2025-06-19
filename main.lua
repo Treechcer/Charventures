@@ -10,7 +10,9 @@ function love.load()
     colors = {
         darkGray = {0.32, 0.31, 0.35},
         yellow = {1.0, 1.0, 0.63},
-        brown = {0.59, 0.29, 0.0}
+        brown = {0.59, 0.29, 0.0},
+        red = {1.0, 0.0, 0.0},
+        waterBlue = {0.0, 0.4, 0.8}
     }
 
     map = mapgen.gen()
@@ -32,6 +34,12 @@ function love.draw()
                 love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
             elseif value[i] == ")" or value[i] == "(" or value[i] == "V" or value[i] == "^" then
                 love.graphics.setColor(colors.brown)
+                love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+            elseif value[i] == "~" then
+                love.graphics.setColor(colors.waterBlue)
+                love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
+            else
+                love.graphics.setColor(colors.red)
                 love.graphics.print(value[i], 0 - player.camera.x + (i - 1) * player.height, 0 + (index - 1) * player.height - player.camera.y)
             end
         end
