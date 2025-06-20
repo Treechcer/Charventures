@@ -19,3 +19,8 @@ This is my game project where I'll try to make game with graphical restriction o
 - goal and score (goal like killing all the enemies and score by killing them and collecting some power ups)
 - health, damage, abilities... And more "rogue-like" / "adventure" stuff
 - & more
+
+# currently working on
+
+- better map generation 
+- effects of ground (eg. `~` = water that slows down etc.)
